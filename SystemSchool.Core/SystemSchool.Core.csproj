@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Mapping\NewFolder1\**" />
+    <Compile Remove="Mapping\NewFolder\**" />
+    <Compile Remove="Mapping\StudentMapper\NewFolder\**" />
+    <Compile Remove="NewFolder\**" />
+    <EmbeddedResource Remove="Mapping\NewFolder1\**" />
+    <EmbeddedResource Remove="Mapping\NewFolder\**" />
+    <EmbeddedResource Remove="Mapping\StudentMapper\NewFolder\**" />
+    <EmbeddedResource Remove="NewFolder\**" />
+    <None Remove="Mapping\NewFolder1\**" />
+    <None Remove="Mapping\NewFolder\**" />
+    <None Remove="Mapping\StudentMapper\NewFolder\**" />
+    <None Remove="NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolSystem.Data\SchoolSystem.Data.csproj" />
+    <ProjectReference Include="..\SchoolSystem.Services\SchoolSystem.Services.csproj" />
+    <ProjectReference Include="..\SystemSchool.InfraStructure\SystemSchool.InfraStructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Students\Commands\" />
+    <Folder Include="Features\Students\Commands\Validators\" />
+    <Folder Include="Features\Students\Commands\Models\" />
+    <Folder Include="Features\Students\Commands\Handlers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="7.0.14" />
+  </ItemGroup>
+
+</Project>
