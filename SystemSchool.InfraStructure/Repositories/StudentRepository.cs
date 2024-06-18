@@ -7,21 +7,22 @@ using System.Text;
 using System.Threading.Tasks;
 using SystemSchool.InfraStructure.Abstracts;
 using SystemSchool.InfraStructure.Context;
+using SystemSchool.InfraStructure.InfraStructureBases;
 
 namespace SystemSchool.InfraStructure.Repositories
 {
-    public class StudentRepository : IStudentRepository
+    public class StudentRepository :GenericRepositoryAsync<Student>, IStudentRepository
     {
         #region fields
 
-        private readonly ApplicationDbContext _applicationDbContext;
+        private readonly DbSet<Student> _StudentRepository;
 
         #endregion
 
         #region ctor
-        public StudentRepository(ApplicationDbContext applicationDbContext) 
+        public StudentRepository(ApplicationDbContext applicationDbContext) :base(applicationDbContext)
         {
-            _applicationDbContext = applicationDbContext;
+            _StudentRepository = applicationDbContext.Set<Student>();
         }
 
 
@@ -30,10 +31,21 @@ namespace SystemSchool.InfraStructure.Repositories
         #region HandleFunctions
         public async Task<List<Student>> GetAllStudentsAsync()
         {
-            var students = await _applicationDbContext.Student.Include(x=>x.Department).ToListAsync();
+            var students = await _StudentRepository.Include(x=>x.Department).ToListAsync();
 
             return students;
         }
+
+        public Task<Student> GetStudentByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        //public async Task<Student> GetStudentByIdAsync(int id)
+        //{
+        //    var student =await  _StudentRepository()
+        //    return 
+        //}
 
         #endregion
 

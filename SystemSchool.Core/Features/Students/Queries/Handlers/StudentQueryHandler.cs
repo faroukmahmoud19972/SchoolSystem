@@ -16,26 +16,27 @@ using SystemSchool.Core.SharedResources;
 
 namespace SystemSchool.Core.Features.Students.Queries.Handlers
 {
-    public class StudentHandler : ResponseHandler,IRequestHandler<GetStudentListQuery,Response< List<GetStudentListResponse>>>
+    public class StudentQueryHandler : ResponseHandler,IRequestHandler<GetStudentListQuery,Response< List<GetStudentListResponse>>>
     {
         #region Fields
 
         private readonly IStudentService _studentService;
         private readonly IMapper _mapper;
-        private readonly IStringLocalizer<Core.Resources.SharedResources> _stringLocalizer;
+        //private readonly IStringLocalizer<Core.Resources.SharedResources> _stringLocalizer;
 
 
 
         #endregion
 
         #region Constructors s
-        public StudentHandler(  IStudentService studentService,
-                                IMapper mapper, 
-                                IStringLocalizer<Resources.SharedResources> stringLocalizer )
+        public StudentQueryHandler(  IStudentService studentService,
+                                IMapper mapper
+                           
+            )
         {
             _studentService = studentService;
             _mapper = mapper;
-            _stringLocalizer = stringLocalizer;
+            //_stringLocalizer = stringLocalizer;
         }
 
         #endregion
@@ -50,11 +51,11 @@ namespace SystemSchool.Core.Features.Students.Queries.Handlers
             return Success(studentlistMapper);
         }
 
-        public object localization()
-        {
+        //public object localization()
+        //{
            
-            return Success(_stringLocalizer[SharedResourcesKeys.success]);
-        }
+        //    return Success(_stringLocalizer[SharedResourcesKeys.success]);
+        //}
 
 
 

@@ -7,6 +7,7 @@ using SystemSchool.Core;
 using SystemSchool.InfraStructure;
 using SystemSchool.InfraStructure.Abstracts;
 using SystemSchool.InfraStructure.Context;
+using SystemSchool.InfraStructure.InfraStructureBases;
 using SystemSchool.InfraStructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -41,17 +42,17 @@ builder.Services.AddInfraStructureDependencies()
 
 #region Localization
 
-const string defaultCulture = "en-GB";
-List<CultureInfo> supportedCultures = new List<CultureInfo>
-{
-    new CultureInfo(defaultCulture),
-    new CultureInfo("es")
-};
-builder.Services.Configure<RequestLocalizationOptions>(options => {
-    options.DefaultRequestCulture = new RequestCulture(defaultCulture);
-    options.SupportedCultures = supportedCultures;
-    options.SupportedUICultures = supportedCultures;
-});
+//const string defaultCulture = "en-GB";
+//List<CultureInfo> supportedCultures = new List<CultureInfo>
+//{
+//    new CultureInfo(defaultCulture),
+//    new CultureInfo("es")
+//};
+//builder.Services.Configure<RequestLocalizationOptions>(options => {
+//    options.DefaultRequestCulture = new RequestCulture(defaultCulture);
+//    options.SupportedCultures = supportedCultures;
+//    options.SupportedUICultures = supportedCultures;
+//});
 
 
 #endregion
@@ -70,8 +71,8 @@ if (app.Environment.IsDevelopment())
 #region LocaliztionMiddleWare
 
 
-var options = app.Services.GetService<IOptions<RequestLocalizationOptions>>();
-app.UseRequestLocalization(options.Value);
+//var options = app.Services.GetService<IOptions<RequestLocalizationOptions>>();
+//app.UseRequestLocalization(options.Value);
 
 
 #endregion
